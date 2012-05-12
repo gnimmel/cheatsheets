@@ -1,0 +1,110 @@
+All of the info
+http://www.kernel.org/pub/software/scm/git/docs/user-manual.html
+
+# for help
+man git-clone
+git help clone
+
+# to check out
+git clone git://git.kernel.org/pub/scm/git/git.git
+
+# to find branches
+git branch
+
+# to see tags
+git tag -l
+
+# to check out a given tag
+$ git checkout -b new v2.6.13
+
+
+# commits 
+
+git show
+
+
+
+-- go go back one push
+
+git push -f origin 8cd39a18732568b94d21:master
+where "8cd39a18732568b94d21" is the last commit you want to use and "master" is the branch name
+
+# backs off one commit
+git reset --soft HEAD^
+
+#unstages
+git reset HEAD /your/file/name
+
+TO MERGE UPSTREAM CHANGES:
+
+http://help.github.com/fork-a-repo/
+
+// LIST THE UPSTRAM REPOS
+git branch -a
+
+
+//Assigns the original repo to a remote called "upstream"
+
+git remote add upstream git://github.com/octocat/Spoon-Knife.git
+
+// Pulls in any changes not present in your local repository, but doesn't modify your working files
+git fetch upstream 
+
+// pulls in any changes not present in your local repository BUT WILL ATTEMPT TO MERGE THEM AUTOMATICALLY (be careful)
+git pull upstream
+
+// merge upstream changes with your 
+git merge upstream/master
+
+
+____
+
+Switching to another branch
+
+The state of your file system will change after executing this command.
+
+git checkout [name of the branch you want to switch to]
+
+OR
+
+git co [name of the branch you want to switch to]
+
+----
+
+TO CREATE A BRANCH AND SWITCH TO IT
+
+git branch NEW_BRANCH_NAME
+
+
+
+//TO CREATE YOUR OWN GIT SERVER
+
+on the server:
+
+mkdir testrepo.git
+cd testrepo.git
+git --bare init
+
+on the client:
+
+To start on the client:
+
+git clone -u /path/git-upload-pack localserver:~/git/testrepo.git
+
+(then setup your .git/config)
+IF YOU ARE ON A SHARED HOST (LIKE HOSTMONSTER) and you can't get links to the bin, configure your .git/config with the following commands
+git config remote.origin.uploadpack '/home/<user name>/bin/git-upload-pack'
+git config remote.origin.receivepack '/home/<user name>/bin/git-receive-pack'
+
+edit files
+git add files
+git commit -m "notes"
+
+>> THE FIRST TIME YOU PUSH BACK,  
+git push origin master
+
+>> the rest of the times, you can use
+git push
+
+
+

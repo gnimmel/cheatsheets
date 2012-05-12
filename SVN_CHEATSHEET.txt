@@ -1,0 +1,47 @@
+SVN CHEAT GUIDE
+
+
+Ignore Files and Folders
+
+EASY
+(go into the directory you want to modify)
+svn propset svn:ignore DIRNAME .
+
+svn propedit svn:ignore DIRNAME . (no slash on the name)
+svn propset svn:ignore dirname .
+
+When you run that command svn will open your text editor, and this is where you can define patterns or specific files to ignore. If you place a * in the property file, it will ignore all files in the directory you specified ./some_path
+
+e.g. 
+* => all
+*.class => .class files
+test_* => test files
+
+Un-add a folder or file
+
+svn revert FOLDER_OR_FILE_NAME
+may need to use
+
+svn revert --depth infinity FOLDER_OR_FILE_NAME
+
+Clean up Locks
+svn cleanup FOLDER_NAME
+
+
+Check In
+svn ci -m "Your check in message here." FOLDER_OR_FILE_NAME
+
+Update
+svn up
+
+Get the current status
+svn stat
+
+
+Specific Revision Number
+svn checkout -r <revision number>
+
+CONFLICT
+If you like the local version say: 
+
+$ svn resolved FILEORFOLDER
